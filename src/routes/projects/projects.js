@@ -11,6 +11,6 @@ router.get("/projects/:id", getSingleProject);
 router.get("/projects/tabs/:category", getProjectsByCategory);
 router.post("/projects", postProject);
 router.get("/projects-count", projectsCount);
-router.post("/projects/add-like/:id", likeProject);
+router.put("/projects/add-like/:id", likeProject);
 
 module.exports = router;

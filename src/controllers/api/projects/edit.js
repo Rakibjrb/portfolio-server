@@ -2,11 +2,10 @@ const Projects = require("../../../models/project/project");
 
 const likeProject = async (req, res, next) => {
   const id = req.params.id;
-  const like = req.body.like;
+  const like = req.body.like + 1;
   try {
-    const liked = like + 1;
-    const project = await Projects.updateOne({ _id: id }, { recected: liked });
-    res.send(project);
+    const liked = await Projects.updateOne({ _id: id }, { recected: like });
+    res.send(liked);
   } catch (error) {
     next(error);
   }
