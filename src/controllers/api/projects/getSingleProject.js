@@ -1,6 +1,6 @@
 const Projects = require("../../../models/project/project");
 
-const getSingleProject = async (req, res) => {
+const getSingleProject = async (req, res, next) => {
   const reqId = req.params.id;
   try {
     const project = await Projects.findOne({ _id: reqId });

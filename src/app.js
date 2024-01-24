@@ -7,6 +7,7 @@ const middleweres = require("./middleweres/middleweres");
 const contact = require("./routes/contact/contact");
 const projects = require(".//routes/projects/projects");
 const token = require("./routes/token/token");
+const adminRoutes = require("./routes/admin/admin");
 
 app.get("/", checkHealth);
 
@@ -19,6 +20,7 @@ app.use(token);
 //app routes
 app.use(projects);
 app.use(contact);
+app.use(adminRoutes);
 
 //server error handling part
 app.all("*", invalidRoute);
