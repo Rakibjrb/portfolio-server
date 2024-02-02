@@ -7,15 +7,9 @@ const createToken = (req, res, next) => {
     const token = jwt.sign(adminInfo, process.env.Secure_Token, {
       expiresIn: "1h",
     });
-    res
-      .cookie("token", token, {
-        httpOnly: true,
-        secure: true,
-        sameSite: "none",
-      })
-      .send({
-        message: "token generated",
-      });
+    res.send({
+      token,
+    });
   } catch (error) {
     next(error);
   }

@@ -12,7 +12,8 @@ const getProjectsByCategory = async (req, res, next) => {
     } else if (
       category === "mern" ||
       category === "frontend" ||
-      category === "basic"
+      category === "basic" ||
+      category === "pending"
     ) {
       const projects = await Projects.find(
         { category },
