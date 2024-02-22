@@ -12,6 +12,7 @@ const projectSchema = Schema({
   live_link: { type: String, required: true },
   client_code: { type: String, required: true },
   server_code: { type: String, required: true },
+  date: { type: String, required: true },
 });
 
 const Projects = model("Project", projectSchema, "projects");
