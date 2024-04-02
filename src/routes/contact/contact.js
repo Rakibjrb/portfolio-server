@@ -1,7 +1,6 @@
-const router = require("express").Router();
-const getContact = require("../../controllers/api/contact/getContact");
+const contactRouter = require("express").Router();
 const postContact = require("../../controllers/api/contact/postContact");
 
-router.post("/contacts", postContact);
+contactRouter.post("/contacts", postContact);
 
-module.exports = router;
+module.exports = contactRouter;

@@ -1,5 +1,29 @@
 const Projects = require("../../../models/project/project");
 
+const projects = async (req, res, next) => {
+  try {
+    const projects = await Projects.find(
+      { type: "latest" },
+      "_id image project_name live_link client_code server_code"
+    ).sort({
+      date: -1,
+    });
+    res.send(projects);
+  } catch (error) {
+    next(error);
+  }
+};
+
+const project = async (req, res, next) => {
+  const reqId = req.params.id;
+  try {
+    const project = await Projects.findOne({ _id: reqId });
+    res.send(project);
+  } catch (error) {
+    next(error);
+  }
+};
+
 const getProjectsByCategory = async (req, res, next) => {
   const category = req.params.category;
   try {
@@ -32,4 +56,15 @@ const getProjectsByCategory = async (req, res, next) => {
   }
 };
 
-module.exports = getProjectsByCategory;
+const projectsCount = async (req, res, next) => {
+  try {
+    const total = await Projects.countDocuments({});
+    res.send({
+      total,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
+module.exports = { projects, project, getProjectsByCategory, projectsCount };

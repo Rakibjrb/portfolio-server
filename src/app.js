@@ -4,8 +4,8 @@ const checkHealth = require("./controllers/health/health");
 const handleErrors = require("./controllers/handleErrors/handleErrors");
 const invalidRoute = require("./controllers/handleErrors/invalidRoute");
 const middleweres = require("./middleweres/middleweres");
-const contact = require("./routes/contact/contact");
-const projects = require(".//routes/projects/projects");
+const contactRouter = require("./routes/contact/contact");
+const projectRouter = require(".//routes/projects/projects");
 const token = require("./routes/token/token");
 const adminRoutes = require("./routes/admin/admin");
 
@@ -18,8 +18,8 @@ middleweres(app, express);
 app.use(token);
 
 //app routes
-app.use(projects);
-app.use(contact);
+app.use(projectRouter);
+app.use(contactRouter);
 app.use(adminRoutes);
 
 //server error handling part

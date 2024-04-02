@@ -1,16 +1,20 @@
-const router = require("express").Router();
+const projectRouter = require("express").Router();
 const { likeProject } = require("../../controllers/api/projects/edit");
-const getProjects = require("../../controllers/api/projects/getProjects");
-const getProjectsByCategory = require("../../controllers/api/projects/getProjectsByCategory");
-const getSingleProject = require("../../controllers/api/projects/getSingleProject");
+const {
+  projects,
+  project,
+  getProjectsByCategory,
+  projectsCount,
+} = require("../../controllers/api/projects/projects");
 const postProject = require("../../controllers/api/projects/postProject");
-const projectsCount = require("../../controllers/api/projects/projectsCount");
 
-router.get("/projects", getProjects);
-router.get("/projects/:id", getSingleProject);
-router.get("/projects/tabs/:category", getProjectsByCategory);
-router.post("/projects", postProject);
-router.get("/projects-count", projectsCount);
-router.put("/projects/add-like/:id", likeProject);
+projectRouter.get("/projects", projects);
+projectRouter.get("/projects/:id", project);
+projectRouter.get("/projects/tabs/:category", getProjectsByCategory);
+projectRouter.put("/projects/add-like/:id", likeProject);
+projectRouter.get("/projects-count", projectsCount);
 
-module.exports = router;
+//routes for admin
+projectRouter.post("/projects", postProject);
+
+module.exports = projectRouter;
