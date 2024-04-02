@@ -1,6 +1,6 @@
 const Projects = require("../../../models/project/project");
 
-const projects = async (req, res, next) => {
+const latestProjects = async (req, res, next) => {
   try {
     const projects = await Projects.find(
       { type: "latest" },
@@ -67,4 +67,9 @@ const projectsCount = async (req, res, next) => {
   }
 };
 
-module.exports = { projects, project, getProjectsByCategory, projectsCount };
+module.exports = {
+  latestProjects,
+  project,
+  getProjectsByCategory,
+  projectsCount,
+};

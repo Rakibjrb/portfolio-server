@@ -11,6 +11,20 @@ const likeProject = async (req, res, next) => {
   }
 };
 
+const removeLatest = async (req, res, next) => {
+  try {
+    const _id = req.params.id;
+    const info = {
+      type: "old",
+    };
+    const removed = await Projects.updateOne({ _id }, info);
+    res.send(removed);
+  } catch (error) {
+    next(error);
+  }
+};
+
 module.exports = {
   likeProject,
+  removeLatest,
 };
