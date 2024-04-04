@@ -30,7 +30,7 @@ const getProjectsByCategory = async (req, res, next) => {
     if (category === "all") {
       const projects = await Projects.find(
         {},
-        "_id image project_name live_link client_code server_code"
+        "_id image project_name live_link client_code server_code date type"
       ).sort({
         date: -1,
       });

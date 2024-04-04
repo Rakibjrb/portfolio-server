@@ -11,14 +11,21 @@ const likeProject = async (req, res, next) => {
   }
 };
 
-const removeLatest = async (req, res, next) => {
+const changeProjectType = async (req, res, next) => {
   try {
     const _id = req.params.id;
-    const info = {
-      type: "old",
-    };
-    const removed = await Projects.updateOne({ _id }, info);
-    res.send(removed);
+    const type = req.body.type;
+    if (type === "old") {
+      const removed = await Projects.updateOne({ _id }, { type: "old" });
+      res.send(removed);
+    } else if (type === "latest") {
+      const removed = await Projects.updateOne({ _id }, { type: "latest" });
+      res.send(removed);
+    } else {
+      res.send({
+        message: "something went wrong !!!",
+      });
+    }
   } catch (error) {
     next(error);
   }
@@ -26,5 +33,5 @@ const removeLatest = async (req, res, next) => {
 
 module.exports = {
   likeProject,
-  removeLatest,
+  changeProjectType,
 };

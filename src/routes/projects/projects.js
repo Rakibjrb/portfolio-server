@@ -1,7 +1,7 @@
 const projectRouter = require("express").Router();
 const {
   likeProject,
-  removeLatest,
+  changeProjectType,
 } = require("../../controllers/api/projects/edit");
 const {
   latestProjects,
@@ -19,6 +19,6 @@ projectRouter.get("/projects-count", projectsCount);
 
 //routes for admin
 projectRouter.post("/projects", postProject);
-projectRouter.put("/remove-from-latest/:id", removeLatest);
+projectRouter.put("/change-type/:id", changeProjectType);
 
 module.exports = projectRouter;
