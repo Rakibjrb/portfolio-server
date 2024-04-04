@@ -8,6 +8,7 @@ const contactRouter = require("./routes/contact/contact");
 const projectRouter = require(".//routes/projects/projects");
 const token = require("./routes/token/token");
 const adminRoutes = require("./routes/admin/admin");
+const linksRouter = require("./routes/links/links");
 
 app.get("/", checkHealth);
 
@@ -18,6 +19,7 @@ middleweres(app, express);
 app.use(token);
 
 //app routes
+app.use(linksRouter);
 app.use(projectRouter);
 app.use(contactRouter);
 app.use(adminRoutes);
