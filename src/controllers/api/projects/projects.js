@@ -6,7 +6,7 @@ const latestProjects = async (req, res, next) => {
       { type: "latest" },
       "_id image project_name live_link client_code server_code"
     ).sort({
-      date: -1,
+      serial: -1,
     });
     res.send(projects);
   } catch (error) {
