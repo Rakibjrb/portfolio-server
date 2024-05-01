@@ -15,4 +15,14 @@ const getAllBlogs = async (req, res, next) => {
   }
 };
 
-module.exports = { getAllBlogs };
+const getLatestBlogs = async (req, res, next) => {
+  try {
+    const latestBlogs = await Blogs.find({ type: "latest" });
+    return res.send(latestBlogs);
+  } catch (error) {
+    console.log(error);
+    next(error);
+  }
+};
+
+module.exports = { getAllBlogs, getLatestBlogs };
