@@ -9,6 +9,7 @@ const projectRouter = require(".//routes/projects/projects");
 const token = require("./routes/token/token");
 const adminRoutes = require("./routes/admin/admin");
 const linksRouter = require("./routes/links/links");
+const blogsRoute = require("./routes/blogs/blogs");
 
 app.get("/", checkHealth);
 
@@ -21,6 +22,7 @@ app.use(token);
 //app routes
 app.use(linksRouter);
 app.use(projectRouter);
+app.use(blogsRoute);
 app.use(contactRouter);
 app.use(adminRoutes);
 
