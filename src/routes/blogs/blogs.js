@@ -4,7 +4,7 @@ const {
   getLatestBlogs,
 } = require("../../controllers/api/blogs/blogs");
 
-blogsRoute.get("/api/blogs/:id", getAllBlogs);
-blogsRoute.get("/api/latest/blogs", getLatestBlogs);
+blogsRoute.get("/blogs/:id", getAllBlogs);
+blogsRoute.get("/latest/blogs", getLatestBlogs);
 
 module.exports = blogsRoute;
