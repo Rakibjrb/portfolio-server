@@ -7,7 +7,7 @@ const blogSchema = new Schema({
     name: { type: String, required: true },
     published_date: { type: String, required: true },
   },
-  thumbnain_image: { type: String, required: true },
+  thumbnail_image: { type: String, required: true },
   like: { type: Number },
   comments: [
     {
