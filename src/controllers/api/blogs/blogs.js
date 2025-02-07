@@ -8,7 +8,7 @@ const getAllBlogs = async (req, res, next) => {
       const blogs = await Blogs.find({})
         .skip(query.skip)
         .limit(9)
-        .sort({ like: 1 });
+        .sort({ like: -1 });
       return res.send(blogs);
     }
     const blog = await Blogs.findOne({ _id });
@@ -20,7 +20,7 @@ const getAllBlogs = async (req, res, next) => {
 
 const getLatestBlogs = async (req, res, next) => {
   try {
-    const latestBlogs = await Blogs.find({ type: "latest" }).sort({ like: 1 });
+    const latestBlogs = await Blogs.find({ type: "latest" }).sort({ like: -1 });
     return res.send(latestBlogs);
   } catch (error) {
     console.log(error);
@@ -28,4 +28,15 @@ const getLatestBlogs = async (req, res, next) => {
   }
 };
 
-module.exports = { getAllBlogs, getLatestBlogs };
+const postBlog = async (req, res, next) => {
+  try {
+    const data = req.body;
+    const posted = await Blogs.create(data);
+    res.send(posted);
+  } catch (error) {
+    console.log(error);
+    next(error);
+  }
+};
+
+module.exports = { getAllBlogs, getLatestBlogs, postBlog };

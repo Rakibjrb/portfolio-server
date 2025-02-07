@@ -13,6 +13,7 @@ const blogSchema = new Schema({
     {
       commenter: {
         name: { type: String },
+        comment: { type: String },
         published_date: { type: String },
       },
     },
